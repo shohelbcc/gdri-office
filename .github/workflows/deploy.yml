@@ -96,13 +96,13 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       continue-on-error: true
       with:
-        server: ${{ secrets.GDRI_OFFICE_FTP_HOST }}
-        username: ${{ secrets.GDRI_OFFICE_FTP_USERNAME }}
+        server: ftp.mshohel.com
+        username: gdri_office@office.mshohel.com
         password: ${{ secrets.GDRI_OFFICE_FTP_PASSWORD }}
         port: 21
         protocol: ftp
         local-dir: ./
-        server-dir: /office.mshohel.com/
+        server-dir: /
         security: loose
         timeout: 60000
         exclude: |
@@ -115,53 +115,7 @@ jobs:
           **/storage/logs/**
           **/bootstrap/cache/**
           
-    - name: 🔄 Deploy to Server via FTP (Attempt 2 - Root directory)
-      if: steps.ftp-deploy-1.outcome == 'failure'
-      id: ftp-deploy-2
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      continue-on-error: true
-      with:
-        server: ${{ secrets.GDRI_OFFICE_FTP_HOST }}
-        username: ${{ secrets.GDRI_OFFICE_FTP_USERNAME }}
-        password: ${{ secrets.GDRI_OFFICE_FTP_PASSWORD }}
-        port: 21
-        protocol: ftp
-        local-dir: ./
-        server-dir: /home/mshohel/office.mshohel.com/
-        security: loose
-        timeout: 60000
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/tests/**
-          **/.env.example
-          **/README.md
-          **/storage/logs/**
-          **/bootstrap/cache/**
-          
-    - name: 🔄 Deploy to Server via FTP (Attempt 3 - Alternative Path)
-      if: steps.ftp-deploy-1.outcome == 'failure' && steps.ftp-deploy-2.outcome == 'failure'
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ${{ secrets.GDRI_OFFICE_FTP_HOST }}
-        username: ${{ secrets.GDRI_OFFICE_FTP_USERNAME }}
-        password: ${{ secrets.GDRI_OFFICE_FTP_PASSWORD }}
-        port: 21
-        protocol: ftp
-        local-dir: ./
-        server-dir: ./office.mshohel.com/
-        security: loose
-        timeout: 60000
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/tests/**
-          **/.env.example
-          **/README.md
-          **/storage/logs/**
-          **/bootstrap/cache/**
+    
           
     - name: ✅ Deployment Success Notification
       if: success()
