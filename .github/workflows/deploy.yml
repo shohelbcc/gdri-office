@@ -67,7 +67,9 @@ jobs:
           ${{ runner.os }}-php-
           
     - name: 🔨 Install Composer Dependencies
-      run: composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist
+      run: |
+        composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist --ignore-platform-reqs
+        composer dump-autoload --optimize
       
     - name: 📋 Setup Node.js
       uses: actions/setup-node@v4
