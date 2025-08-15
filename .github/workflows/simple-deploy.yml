@@ -14,13 +14,19 @@ jobs:
     - name: 📥 Get Latest Code
       uses: actions/checkout@v4
       
-    - name: 🔧 Setup PHP 8.1
+    - name: 🔧 Setup PHP 8.3
       uses: shivammathur/setup-php@v2
       with:
-        php-version: 8.1
+        php-version: 8.3
+        extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, gd, curl, zip
+        tools: composer:v2
         
-    - name: 📦 Install Composer Dependencies
-      run: composer install --no-dev --optimize-autoloader --no-interaction
+    - name: 📦 Install Composer Dependencies (Fresh)
+      run: |
+        php --version
+        composer --version
+        rm -f composer.lock
+        composer update --no-dev --optimize-autoloader --no-interaction --prefer-dist
       
     - name: 🎨 Setup Node & Build Assets
       uses: actions/setup-node@v4
@@ -34,11 +40,11 @@ jobs:
     - name: 🚀 Deploy via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USER }}
-        password: ${{ secrets.FTP_PASS }}
+        server: ftp.mshohel.com
+        username: gdri_office@office.mshohel.com
+        password: 7901_gdri_office
         local-dir: ./
-        server-dir: ./office.mshohel.com/
+        server-dir: /
         exclude: |
           **/.git*
           **/.git*/**
