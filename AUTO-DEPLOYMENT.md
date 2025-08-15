@@ -10,9 +10,9 @@ GitHub repository তে যান এবং **Settings > Secrets and Variables 
 ### Required Secrets:
 
 ```
-FTP_HOST=office.mshohel.com (বা আপনার FTP server)
-FTP_USER=mshohel (আপনার FTP username)
-FTP_PASS=your_ftp_password (আপনার FTP password)
+GDRI_OFFICE_FTP_HOST=ftp.mshohel.com
+GDRI_OFFICE_FTP_USERNAME=gdri_office@office.mshohel.com  
+GDRI_OFFICE_FTP_PASSWORD=7901_gdri_office
 ```
 
 ### Optional Secrets (SSH access থাকলে):

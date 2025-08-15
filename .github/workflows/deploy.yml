@@ -58,9 +58,9 @@ jobs:
     - name: 🚀 Deploy to Server via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
+        server: ${{ secrets.GDRI_OFFICE_FTP_HOST }}
+        username: ${{ secrets.GDRI_OFFICE_FTP_USERNAME }}
+        password: ${{ secrets.GDRI_OFFICE_FTP_PASSWORD }}
         local-dir: ./
         server-dir: /
         exclude: |
