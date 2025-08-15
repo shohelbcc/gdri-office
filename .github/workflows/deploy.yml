@@ -3,8 +3,44 @@ name: 🚀 Deploy GDRI Application
 on:
   push:
     branches:
-      - master
-  workflow_dispatch:
+      - ma    - name: ✅ Deployment Success Notification
+      if: success()
+      run: |
+        echo "🎉 GDRI Application deployed successfully!"
+        echo "🌐 Website: https://office.mshohel.com"
+        echo "📅 Deployment Time: $(date)"
+        echo "👤 Deployed by: ${{ github.actor }}"
+        echo "📝 Commit: ${{ github.event.head_commit.message }}"
+        
+    - name: ❌ Deployment Failure Notification  
+      if: failure()
+      run: |
+        echo "❌ GDRI Application deployment failed!"
+        echo "📋 Please check the logs above for details"
+        echo "💡 Common fixes: Check FTP credentials, server connectivity"
+        
+    - name: 📧 Send Status Email
+      if: always()
+      uses: dawidd6/action-send-mail@v3
+      continue-on-error: true
+      with:
+        server_address: bcc.solutionshealthmate.com
+        server_port: 465
+        username: support@bcc.solutionshealthmate.com
+        password: ${{ secrets.GDRI_OFFICE_EMAIL_PASSWORD }}
+        subject: "🚀 GDRI Deployment Status: ${{ job.status }}"
+        to: your-email@example.com
+        from: GDRI Auto Deploy <support@bcc.solutionshealthmate.com>
+        body: |
+          GDRI Application Deployment Status: ${{ job.status }}
+          
+          📅 Time: ${{ github.event.head_commit.timestamp }}
+          👤 Author: ${{ github.event.head_commit.author.name }}
+          💬 Message: ${{ github.event.head_commit.message }}
+          🔗 Repository: ${{ github.repository }}
+          🌐 Website: https://office.mshohel.com
+          
+          GitHub Actions: ${{ github.server_url }}/${{ github.repository }}/actionsflow_dispatch:
 
 jobs:
   deploy:

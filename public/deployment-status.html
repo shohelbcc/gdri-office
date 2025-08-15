@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDRI Deployment Status</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        .status { padding: 15px; margin: 10px 0; border-radius: 8px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .timestamp { font-size: 0.9em; opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <h1>🚀 GDRI Deployment Status</h1>
+    
+    <div class="status success">
+        <h3>✅ Last Deployment Status</h3>
+        <p><strong>Status:</strong> <span id="deploymentStatus">Checking...</span></p>
+        <p><strong>Last Updated:</strong> <span id="lastUpdate">Loading...</span></p>
+        <p><strong>Version:</strong> <span id="version">{{ date('Y-m-d H:i:s') }}</span></p>
+    </div>
+    
+    <div class="status info">
+        <h3>📊 Deployment Information</h3>
+        <p><strong>Repository:</strong> <a href="https://github.com/shohelbcc/gdri-office" target="_blank">shohelbcc/gdri-office</a></p>
+        <p><strong>Branch:</strong> master</p>
+        <p><strong>Auto Deploy:</strong> Enabled ✅</p>
+        <p><strong>Last Commit:</strong> <span id="lastCommit">Auto deployment test</span></p>
+    </div>
+    
+    <div class="status info">
+        <h3>🔗 Quick Links</h3>
+        <p><a href="https://office.mshohel.com" target="_blank">🌐 Visit Website</a></p>
+        <p><a href="https://github.com/shohelbcc/gdri-office/actions" target="_blank">📊 GitHub Actions</a></p>
+        <p><a href="https://github.com/shohelbcc/gdri-office" target="_blank">📁 Repository</a></p>
+    </div>
+
+    <script>
+        // Update timestamp
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
+        document.getElementById('deploymentStatus').textContent = 'Successfully Deployed ✅';
+        
+        // Auto refresh every 30 seconds
+        setTimeout(() => location.reload(), 30000);
+    </script>
+</body>
+</html>
