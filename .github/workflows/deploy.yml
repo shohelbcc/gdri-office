@@ -91,10 +91,8 @@ jobs:
         # Create deployment zip
         zip -r deployment.zip . -x "*.git*" "node_modules/*" "tests/*" ".env.example" "README.md"
         
-    - name: 🚀 Deploy to Server via FTP (Attempt 1)
-      id: ftp-deploy-1
+    - name: 🚀 Deploy to Server via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      continue-on-error: true
       with:
         server: ftp.mshohel.com
         username: gdri_office@office.mshohel.com
