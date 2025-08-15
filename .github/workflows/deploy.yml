@@ -3,7 +3,18 @@ name: 🚀 Deploy GDRI Application
 on:
   push:
     branches:
-      - ma    - name: ✅ Deployment Success Notification
+       - name: 🔨 Install Composer Dependencies (Fresh)
+      run: |
+        echo "🔍 PHP Version Check:"
+        php --version
+        echo "🔍 Composer Version Check:"
+        composer --version
+        echo "🗑️ Removing lock file for fresh install..."
+        rm -f composer.lock
+        echo "🚀 Installing fresh dependencies..."
+        composer update --no-dev --optimize-autoloader --no-interaction --prefer-dist --verbose
+        echo "✅ Optimizing autoloader..."
+        composer dump-autoload --optimize ✅ Deployment Success Notification
       if: success()
       run: |
         echo "🎉 GDRI Application deployed successfully!"
@@ -45,13 +56,13 @@ on:
 jobs:
   deploy:
     name: 🌐 Deploy to Production Server
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     
     steps:
     - name: 📥 Checkout Code
       uses: actions/checkout@v4
       
-    - name: 🔧 Setup PHP
+    - name: 🔧 Setup PHP 8.3
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.3'
@@ -59,6 +70,12 @@ jobs:
         coverage: none
         ini-values: memory_limit=512M
         tools: composer:v2
+        
+    - name: ✅ Verify PHP Version
+      run: |
+        php --version
+        which php
+        composer --version
         
     - name: 📦 Cache Composer Dependencies
       uses: actions/cache@v3
