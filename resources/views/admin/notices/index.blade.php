@@ -1,0 +1,9 @@
+@extends('layouts.app-admin')
+@section('content')
+    @include('components.admin.notices.list')
+    @include('components.admin.notices.info')
+    @include('components.admin.notices.create')
+    @include('components.admin.notices.update')
+    @include('components.admin.notices.delete')
+    @include('components.admin.notices.bulk-delete')
+@endsection

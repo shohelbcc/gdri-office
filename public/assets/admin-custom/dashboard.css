@@ -1,0 +1,580 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* ===============================
+   ========= Global CSS ==========
+   =============================== */
+:root {
+  --green: #00a400;
+  --yellow: #ffff00;
+  --green_dark: #007b00;
+  --light: #ededed;
+  --white: #ffffff;
+  --dark: #3c3c3c;
+  --light_dark: #d9d8d8;
+  --black: #000000;
+}
+
+.admin_page {
+    min-height: 80vh;
+}
+
+.admin_page .card {
+    padding-top: 0 !important;
+}
+
+
+@font-face {
+  font-family: SolaimanLipi;
+  src: url('fonts/SolaimanLipi.woff2');
+}
+
+.roboto_regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto_bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.bg_green {
+  background: var(--green);
+}
+.bg_light {
+  background: var(--light);
+}
+.bg_white {
+  background: var(--white);
+}
+
+.text_green {
+  color: var(--green);
+}
+
+body,
+p,
+a {
+  font-family: 'roboto', sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.text_english_title {
+  font-family: 'poppins', sans-serif;
+}
+.text_english {
+  font-family: 'roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'poppins', sans-serif;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+h2 {
+  font-size: 40px;
+  color: var(--green_dark);
+}
+
+h3 {
+  font-size: 26px;
+}
+
+h4 {
+  font-size: 28px;
+  color: var(--green);
+}
+
+h5 {
+  font-size: 22px;
+}
+
+/* btn */
+/* btn_green_outline */
+.btn_green_outline {
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+
+.btn_green_outline.active,
+.btn_green_outline:focus,
+.btn_green_outline:hover {
+  background: var(--green);
+  color: var(--light);
+  border: 1px solid var(--green);
+}
+
+/* btn_green */
+
+.btn_green{
+  background: var(--green);
+  color: var(--light);
+  border: 1px solid var(--green);
+}
+
+.btn_green.active,
+.btn_green:focus,
+.btn_green:hover {
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+
+/* btn_dark */
+
+.btn_dark{
+  background: var(--dark);
+  color: var(--light);
+  border: 1px solid var(--dark);
+}
+
+.btn_dark.active,
+.btn_dark:focus,
+.btn_dark:hover {
+  background: transparent;
+  color: var(--dark);
+  border: 1px solid var(--dark);
+}
+
+.page_title {
+  border-bottom: 1px solid var(--green);
+  margin-bottom: 20px;
+}
+
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card h5,
+.card h6,
+.card p {
+  margin-bottom: 10px;
+}
+
+
+.card_hover_scale {
+  overflow: hidden;
+  padding: 0;
+  border-radius: 0;
+  transition: 0.5s;
+}
+
+.card_hover_scale:hover {
+  scale: 1.02;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.breadcrumb-item.active {
+  color: var(--green) !important;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* ################# bodyNav ###################### */
+#bodyNav {
+  position: sticky;
+  top: 59px;
+  z-index: 1;
+}
+
+
+/* ================ Table ================== */
+#marksDistribution tbody tr td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+
+
+
+/* =============================================================================== */
+.dashboard_card_title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
+
+
+button.logout .icon::before {
+  font-size: 14px;
+}
+
+button.logout {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: #e0e0e0;
+  margin-left: 11px;
+}
+
+button.logout:hover,
+button.logout.active,
+button.logout:focus {
+  color: #ffffff;
+  border: 0 !important;
+  outline: 0;
+}
+
+/* Logo */
+.sl-logo img {
+  max-width: 185px;
+  min-width: 60px;
+  width: 100%;
+  height: auto;
+}
+
+.sl-menu-item span {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sl-menu-link.active {
+  color: var(--green);
+  background: #e9ecef;
+}
+
+.dashboard_item .card-header {
+  border: 0;
+  border-radius:0;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboard_item .card-header h6 {
+  margin: 0;
+  margin-right: 5px;
+  line-height: 20px;
+}
+.dashboard_item .card-body p {
+  font-size: 18px;
+  margin: 0;
+}
+.dashboard_item .card-header h6.status {
+  font-size: 20px;
+  color: var(--green);
+}
+.dashboard_item .card-body p span {
+  font-weight: bold;
+}
+
+/* body Nav */
+.sl-breadcrumb .breadcrumb-item {
+  font-size: 21px;
+  color: #868e96;
+}
+.course_nave .navbar-nav .nav-item {
+  position: relative;
+}
+.course_nave .navbar-brand,
+.course_nave .navbar-nav .nav-item .nav-link {
+  font-family: SolaimanLipi !important;
+  font-size: 20px !important;
+}
+.course_nave .navbar-brand {
+  font-size: 23px !important;
+  font-weight: bold !important;
+}
+.course_nave .navbar-nav .nav-item:not(:first-child)::before {
+  content: '|';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.course_nave button.navbar-toggler {
+  border: 0;
+}
+
+.card .card-body h5,
+.card .card-body p,
+.card .card-body li,
+.card .card-body span {
+  font-family: "Roboto", sans-serif;
+}
+.card .card-body p,
+.card .card-body li,
+.card .card-body span {
+  font-size: 18px;
+  margin: 0;
+  line-height: 25px;
+}
+.card .card-body svg {
+  font-size: 15px;
+}
+.card:hover .card-body h5 {
+  color: var(--green);
+}
+.bg_green,
+.bg_green h2 {
+  color: var(--light);
+  font-family: 'poppins', sans-serif;
+}
+
+
+/* ================ Lecture Page ================ */
+/* .review table tr th, */
+.lecture table tr th {
+  font-family: "poppins", sans-serif;
+  font-weight: bold;
+  font-size: 21px;
+}
+
+/* ============= Review ============= */
+.form-check-label {
+  padding-left: 5px;
+}
+.review_item {
+  min-width: 270px;
+}
+
+th[data-bs-toggle] {
+  cursor: pointer;
+}
+
+/* ============= Quize ============= */
+.quiz p {
+  color: var(--green);
+  font-family: 'Roboto', sans-serif !important;
+}
+.quiz_test_start h5{
+  font-family: "poppins", sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+}
+.quiz_test_start a {
+  width: 25%;
+  min-width: 160px;
+}
+
+
+
+/* ========================= Resume ========================== */
+.hr_line {
+  height: 1px;
+  background: var(--green);
+  margin: 15px auto;
+}
+.resume {
+  border: 1px solid var(--dark);
+}
+
+.resume .col-md-4 {
+  background: #efefef;
+  padding: 15px;
+}
+
+.resume .col-md-8 {
+  padding: 15px;
+}
+
+.resume .col-md-4 .photo {
+  height: 192px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 10px;
+}
+.resume .col-md-4 .name {
+  margin-bottom: 20px;
+}
+
+.resume .col-md-4 .contact {
+  margin-bottom: 20px;
+}
+
+/* ======================= */
+.resume .col-md-8 .experiences {
+  margin-bottom: 20px;
+}
+
+/* ================ Skills ================ */
+.scills .fa-check {
+  font-size: 14px;
+}
+
+/* ================ Profile ================ */
+.profile .photo {
+  height: 192px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 10px;
+}
+
+/* ==================== Calendar ================== */
+.fc-h-event .fc-event-main {
+  color: var(--light);
+  background: var(--green_dark);
+}
+.fc-h-event .fc-event-main:hover {
+  background: var(--dark);
+}
+
+/* ========================= */
+.carousel-caption {
+  padding: 0 !important;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon
+{
+  color: var(--green);
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover
+{
+  color: var(--green_dark);
+}
+
+
+
+
+
+/*!
+ * jQuery Conveyor Ticker (jConveyorTicker)
+ * Description: jQuery plugin to create simple horizontal conveyor belt animated tickers.
+ *
+ * Copyright (c) 2017 Luis Luz - UXD Lda
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ * Project home:
+ *   https://github.com/lluz/jquery-conveyor-ticker
+ *
+ * Version:  1.1.0
+ *
+ */
+
+ .jctkr-wrapper,
+ .jctkr-wrapper *{
+   box-sizing: border-box;
+   background: var(--green);
+   padding-top: 3px !important;
+   padding-bottom: 3px !important;
+ }
+ .jctkr-wrapper{
+   display: inline-block;
+   position: relative;
+   width: 100%;
+   height: 40px;
+   vertical-align: top;
+   overflow: hidden;
+ }
+ .jctkr-wrapper ul{
+   position: absolute;
+   left: 0;
+   top: 0;
+   height: 100%;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   white-space: nowrap;
+   font-size: 0;
+   text-align: left;
+   opacity: 0;
+   -webkit-transition: opacity 1s;
+   transition: opacity 1s;
+ }
+ .jctkr-wrapper.jctkr-initialized ul{
+   opacity: 1;
+ }
+ .jctkr-wrapper ul li{
+   display: inline-block;
+   font-family: sans-serif;
+   font-size: 16px;
+ }
+ .jctkr-wrapper ul li a {
+  text-decoration: none;
+  color: var(--light);
+  font-family: "roboto", sans-serif;
+  font-size: 20px;
+ }
+ .jctkr-wrapper ul li:not(:last-child) {
+  margin-right: 20px !important;
+  color: var(--light);
+ }
+ .jctkr-wrapper ul li:not(:last-child)::after {
+  content: '||';
+  margin-left: 20px;
+ }
+ .jctkr-label{
+   display: inline-block;
+ }
+
+ .custom_btn.btn-outline-success:hover {
+    color: var(--light) !important;
+ }
+
+ /* ######### Admin Dashboard Card Item ########## */
+ .dashboard_card {
+    padding: 10px;
+    border-radius: 5px;
+ }
+ .dashboard_card_item {
+    border: 4px dotted;
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+ }
+
+
+ /* ######### Select 2 ######## */
+ .select2-selection__choice, .elect2-selection__choice__remove, .elect2-selection__choice__remove span {
+    background: var(--green_dark) !important;
+    color: var(--light) !important;
+ }
+
+ .select2-container--default .select2-selection--multiple::after {
+    content: "\f107"; /* Font Awesome down angle */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #aaa;
+  }
+
+ /* ######### Question Assign to Quiz ######## */
+  /* #questionAssignToQuiz {
+    position: sticky;
+    top: 200px;
+    background: red;
+  } */

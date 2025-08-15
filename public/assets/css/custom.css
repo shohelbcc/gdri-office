@@ -1,0 +1,39 @@
+
+:root {
+    --primary: #06BBCC;
+    --light: #F0FBFC;
+    --dark: #181d38;
+}
+
+.list-none {
+    list-style: none;
+    padding: 0;
+}
+
+.list-none li {
+    margin-bottom: 12px;
+}
+
+#about_us_page .container {
+    border: 1px dashed var(--primary);
+    padding: 25px;
+    border-radius: 25px;
+}
+
+.dark_banner {
+    color: var(--light);
+}
+.light_banner {
+    color: var(--dark);
+}
+
+.border-priary {
+    border: 1px solid var(--primary);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    max-width: 100vw !important;
+    overflow-x: hidden;
+}

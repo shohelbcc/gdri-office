@@ -1,0 +1,685 @@
+/* ===============================
+   ========= Global CSS ==========
+   =============================== */
+:root {
+  --green: #00a400;
+  --yellow: #ffff00;
+  --green_dark: #007b00;
+  --light: #ededed;
+  --white: #ffffff;
+  --dark: #3c3c3c;
+  --light_dark: #d9d8d8;
+  --black: #000000;
+}
+
+
+@font-face {
+  font-family: SolaimanLipi;
+  src: url('fonts/SolaimanLipi.woff2');
+}
+
+.bg_green {
+  background: var(--green);
+}
+.bg_light {
+  background: var(--light);
+}
+.bg_white {
+  background: var(--white);
+}
+
+.leadbb {
+  font-family: SolaimanLipi;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.leadbt {
+  font-family: SolaimanLipi;
+}
+
+.leadrb {
+  font-family: SolaimanLipi;
+  font-size: 20px;
+}
+.text_bangla_title {
+  font-family: SolaimanLipi;
+  font-weight: bold;
+}
+.text_bangla {
+  font-family: SolaimanLipi;
+}
+
+.text_green {
+  color: var(--green);
+}
+
+body,
+p,
+a {
+  font-family: 'roboto', sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.text_english_title {
+  font-family: 'poppins', sans-serif;
+}
+.text_english {
+  font-family: 'roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'poppins', sans-serif;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+h2 {
+  font-size: 40px;
+  font-family: SolaimanLipi;
+  color: var(--green_dark);
+}
+
+h3 {
+  font-size: 26px;
+}
+
+h4 {
+  font-size: 28px;
+  font-family: SolaimanLipi;
+  color: var(--green);
+}
+
+h5 {
+  font-size: 22px;
+}
+
+.btn-dark,
+.btn-outline-dark {
+  border-radius: 100px;
+}
+
+.btn-dark:hover {
+  background: transparent;
+  color: var(--dark);
+}
+
+.page_title {
+  border-bottom: 1px solid var(--green);
+  margin-bottom: 20px;
+  padding-left: 5px;
+}
+
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card h5,
+.card h6,
+.card p {
+  margin-bottom: 10px;
+}
+
+.card a.btn {
+  font-family: SolaimanLipi;
+  font-size: 20px;
+}
+
+.card,
+.card-header {
+  overflow: hidden !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.card_hover_scale {
+  overflow: hidden;
+  padding: 0;
+  border-radius: 0;
+  transition: 0.5s;
+}
+
+.card_hover_scale:hover {
+  scale: 1.02;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.breadcrumb-item.active {
+  color: var(--green) !important;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* ################# bodyNav ###################### */
+#bodyNav {
+  position: sticky;
+  top: 59px;
+  z-index: 1;
+}
+
+
+/* ================ Table ================== */
+#marksDistribution tbody tr td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+
+
+
+/* =============================================================================== */
+.dashboard_card_title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
+
+
+button.logout .icon::before {
+  font-size: 14px;
+}
+
+button.logout {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: #e0e0e0;
+  margin-left: 11px;
+}
+
+button.logout:hover,
+button.logout.active,
+button.logout:focus {
+  color: #ffffff;
+  border: 0 !important;
+  outline: 0;
+}
+
+/* Logo */
+.sl-logo img {
+  max-width: 185px;
+  min-width: 60px;
+  width: 100%;
+  height: auto;
+}
+
+::-webkit-scrollbar {
+    width: 6px; /* Change this value to make the scrollbar thinner */
+  }
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--green); /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Make it rounded (optional) */
+  }
+
+.sl-sideleft .sl-sideleft-menu.user_menu {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    overflow-y: auto;
+
+}
+
+
+
+.sl-menu-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+}
+
+.sl-menu-link {
+    order: 1;
+}
+.sl-menu-link.dashboard {
+    order: -2 !important;
+}
+
+.sl-menu-link.active {
+    color: var(--green);
+    background: #e9ecef;
+    order: -1;
+  }
+
+.sl-menu-item span {
+  font-family: SolaimanLipi;
+  font-size: 20px;
+}
+
+
+.notification ul,
+.notification li,
+.notification p {
+  margin: 0;
+  padding: 0;
+}
+
+.notification .tickerwrapper {
+  /* the outer div */
+  background: var(--green);
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  margin-top: -20px;
+  padding-bottom: 10px !important;
+  padding-top: 10px !important;
+}
+
+.notification ul.list {
+  position: relative;
+  height: 20px;
+  overflow: hidden;
+  display: inline-block;
+  list-style: disc;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.notification ul.list li {
+  display: inline-block;
+  padding-left: 20px;
+}
+.notification ul.list .listitem a {
+  color: var(--white);
+  font-family: SolaimanLipi;
+  font-size: 20px;
+  line-height: 0;
+  display: inline-block;
+}
+
+.dashboard_item .card-header {
+  border: 0;
+  border-radius:0;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboard_item .card-header h6 {
+  margin: 0;
+  margin-right: 5px;
+  line-height: 20px;
+}
+.dashboard_item .card-body p {
+  font-family: SolaimanLipi;
+  font-size: 18px;
+  margin: 0;
+}
+.dashboard_item .card-header h6.status {
+  font-family: SolaimanLipi;
+  font-size: 20px;
+  color: var(--green);
+}
+.dashboard_item .card-body p span {
+  font-weight: bold;
+}
+
+/* body Nav */
+.sl-breadcrumb .breadcrumb-item {
+  font-family: SolaimanLipi;
+  font-size: 21px;
+  color: #868e96;
+}
+.course_nave .navbar-nav .nav-item {
+  position: relative;
+}
+.course_nave .navbar-brand,
+.course_nave .navbar-nav .nav-item .nav-link {
+  font-family: SolaimanLipi !important;
+  font-size: 20px !important;
+}
+.course_nave .nav-link.active {
+    color: var(--green);
+    border-bottom: 2px solid var(--green);
+    border-radius: 5px;
+}
+.course_nave .navbar-brand {
+  font-size: 23px !important;
+  font-weight: bold !important;
+}
+.course_nave .navbar-nav .nav-item:not(:first-child)::before {
+  content: '|';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.course_nave button.navbar-toggler {
+  border: 0;
+}
+
+.card .card-body h5,
+.card .card-body p,
+.card .card-body li,
+.card .card-body span {
+  font-family: SolaimanLipi;
+}
+.card .card-body p,
+.card .card-body li,
+.card .card-body span {
+  font-size: 18px;
+  margin: 0;
+  line-height: 25px;
+}
+.card .card-body svg {
+  font-size: 15px;
+}
+.card:hover .card-body h5 {
+  color: var(--green);
+}
+.bg_green,
+.bg_green h2 {
+  color: var(--light);
+  font-family: 'poppins', sans-serif;
+}
+
+
+/* ================ Lecture Page ================ */
+/* .review table tr th, */
+.lecture table tr th {
+  font-family: SolaimanLipi;
+  font-weight: bold;
+  font-size: 21px;
+}
+
+/* ============= Review ============= */
+.form-check-label {
+  padding-left: 5px;
+}
+.review_item {
+  min-width: 270px;
+}
+
+th[data-bs-toggle] {
+  cursor: pointer;
+}
+
+/* ============= Quize ============= */
+.quiz p {
+  color: var(--green);
+  font-family: 'Roboto', sans-serif !important;
+}
+.quiz_test_start h5{
+  font-family: SolaimanLipi;
+  font-weight: bold;
+  font-size: 28px;
+}
+.quiz_test_start a {
+  width: 25%;
+  min-width: 160px;
+}
+
+
+
+/* ========================= Resume ========================== */
+.hr_line {
+  height: 1px;
+  background: var(--green);
+  margin: 15px auto;
+}
+.resume {
+  border: 1px solid var(--dark);
+}
+
+.resume .col-md-4 {
+  background: #efefef;
+  padding: 15px;
+}
+
+.resume .col-md-8 {
+  padding: 15px;
+}
+
+.resume .col-md-4 .photo {
+  height: 192px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 10px;
+}
+.resume .col-md-4 .name {
+  margin-bottom: 20px;
+}
+
+.resume .col-md-4 .contact {
+  margin-bottom: 20px;
+}
+
+/* ======================= */
+.resume .col-md-8 .experiences {
+  margin-bottom: 20px;
+}
+
+/* ================ Skills ================ */
+.scills .fa-check {
+  font-size: 14px;
+}
+
+/* ================ Profile ================ */
+.profile .photo {
+  height: 192px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 10px;
+}
+
+/* ==================== Calendar ================== */
+.fc-h-event .fc-event-main {
+  color: var(--light);
+  background: var(--green_dark);
+}
+.fc-h-event .fc-event-main:hover {
+  background: var(--dark);
+}
+
+/* ================= Study Plan =================== */
+
+
+/* ================= Study Plan =================== */
+/* Study Plan */
+#studyPlan h3 {
+  font-family: SolaimanLipi;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+#studyPlan ul li {
+  font-family: 'roboto', sans-serif;
+  font-size: 16px;
+}
+
+#studyPlanTitle p {
+  font-family: SolaimanLipi;
+  font-size: 22px;
+}
+
+#studyPlanTitle span {
+  font-weight: bold;
+}
+/* Study Plan Module */
+/* Green Yellow */
+#studyPlan .accordion-item.item_green .module {
+  background: var(--green);
+  padding: 8px;
+  border-radius: 5px;
+  text-align: center;
+}
+#studyPlan .accordion-item.item_green .module h6 {
+  font-family: SolaimanLipi;
+  font-size: 20px;
+  color: var(--light);
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin: 0;
+}
+#studyPlan .accordion-item.item_green .module p {
+  font-family: SolaimanLipi;
+  font-size: 22px;
+  color: var(--light);
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.accordion-collapse.show {
+  border-bottom: 1px solid var(--green);
+}
+#studyPlan .accordion-item.item_green .accordion-body h6 {
+  font-family: SolaimanLipi;
+  font-size: 22px;
+  letter-spacing: 1px;
+  margin: 0 0 7px 0;
+}
+
+#studyPlan .accordion-item.item_green th {
+  background: var(--yellow);
+  color: var(--dark);
+}
+
+/* Yellow Green */
+#studyPlan .accordion-item.item_yellow .module {
+  background: var(--yellow);
+  padding: 8px;
+  border-radius: 5px;
+  text-align: center;
+}
+#studyPlan .accordion-item.item_yellow .module h6 {
+  font-family: SolaimanLipi;
+  font-size: 20px;
+  color: var(--dark);
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin: 0;
+}
+#studyPlan .accordion-item.item_yellow .module p {
+  font-family: SolaimanLipi;
+  font-size: 22px;
+  color: var(--dark);
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+
+
+
+
+/* ========================= */
+.carousel-caption {
+  padding: 0 !important;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon
+{
+  color: var(--green);
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover
+{
+  color: var(--green_dark);
+}
+
+
+
+
+
+/*!
+ * jQuery Conveyor Ticker (jConveyorTicker)
+ * Description: jQuery plugin to create simple horizontal conveyor belt animated tickers.
+ *
+ * Copyright (c) 2017 Luis Luz - UXD Lda
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ * Project home:
+ *   https://github.com/lluz/jquery-conveyor-ticker
+ *
+ * Version:  1.1.0
+ *
+ */
+
+ .jctkr-wrapper,
+ .jctkr-wrapper *{
+   box-sizing: border-box;
+   background: var(--green);
+   padding-top: 3px !important;
+   padding-bottom: 3px !important;
+ }
+ .jctkr-wrapper{
+   display: inline-block;
+   position: relative;
+   width: 100%;
+   height: 40px;
+   vertical-align: top;
+   overflow: hidden;
+ }
+ .jctkr-wrapper ul{
+   position: absolute;
+   left: 0;
+   top: 0;
+   height: 100%;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   white-space: nowrap;
+   font-size: 0;
+   text-align: left;
+   opacity: 0;
+   -webkit-transition: opacity 1s;
+   transition: opacity 1s;
+ }
+ .jctkr-wrapper.jctkr-initialized ul{
+   opacity: 1;
+ }
+ .jctkr-wrapper ul li{
+   display: inline-block;
+   font-family: sans-serif;
+   font-size: 16px;
+ }
+ .jctkr-wrapper ul li a {
+  text-decoration: none;
+  color: var(--light);
+  font-family: SolaimanLipi;
+  font-size: 20px;
+ }
+ .jctkr-wrapper ul li:not(:last-child) {
+  margin-right: 20px !important;
+  color: var(--light);
+ }
+ .jctkr-wrapper ul li:not(:last-child)::after {
+  content: '||';
+  margin-left: 20px;
+ }
+ .jctkr-label{
+   display: inline-block;
+ }

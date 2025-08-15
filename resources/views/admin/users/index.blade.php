@@ -1,0 +1,9 @@
+@extends('layouts.app-admin')
+@section('content')
+    @include('components.admin.users.list')
+    @include('components.admin.users.create')
+    @include('components.admin.users.update')
+    @include('components.admin.users.delete')
+    @include('components.admin.users.bulk-delete')
+    @include('components.admin.users.info')
+@endsection
