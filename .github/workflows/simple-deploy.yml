@@ -1,0 +1,56 @@
+name: 📤 Simple FTP Deploy
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  web-deploy:
+    name: 🌐 Deploy to Web Server
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Get Latest Code
+      uses: actions/checkout@v4
+      
+    - name: 🔧 Setup PHP 8.1
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1
+        
+    - name: 📦 Install Composer Dependencies
+      run: composer install --no-dev --optimize-autoloader --no-interaction
+      
+    - name: 🎨 Setup Node & Build Assets
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    - run: |
+        npm ci --only=production
+        npm run build
+        
+    - name: 🚀 Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASS }}
+        local-dir: ./
+        server-dir: ./office.mshohel.com/
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/tests/**
+          **/.env
+          **/.env.example
+          **/README.md
+          **/package-lock.json
+          **/phpunit.xml
+          
+    - name: ✅ Deployment Complete
+      run: |
+        echo "🎉 GDRI Application deployed successfully!"
+        echo "🌐 Visit: https://office.mshohel.com"

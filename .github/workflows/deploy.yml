@@ -1,0 +1,87 @@
+name: 🚀 Deploy GDRI Application
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: 🌐 Deploy to Production Server
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: 🔧 Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, gd, curl, zip
+        coverage: none
+        
+    - name: 📦 Cache Composer Dependencies
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+          
+    - name: 🔨 Install Composer Dependencies
+      run: composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist
+      
+    - name: 📋 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: 🎨 Install NPM Dependencies & Build Assets
+      run: |
+        npm ci --only=production
+        npm run build
+        
+    - name: 📁 Create Deployment Archive
+      run: |
+        # Remove unnecessary files for production
+        rm -rf node_modules
+        rm -rf tests
+        rm -rf .git
+        rm -rf storage/logs/*.log
+        
+        # Create deployment zip
+        zip -r deployment.zip . -x "*.git*" "node_modules/*" "tests/*" ".env.example" "README.md"
+        
+    - name: 🚀 Deploy to Server via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./
+        server-dir: /
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/tests/**
+          **/.env.example
+          **/README.md
+          **/storage/logs/**
+          **/bootstrap/cache/**
+          
+    - name: ✅ Deployment Success Notification
+      if: success()
+      run: |
+        echo "🎉 GDRI Application deployed successfully!"
+        echo "🌐 Website: https://office.mshohel.com"
+        echo "� Deployment Time: $(date)"
+        
+    - name: ❌ Deployment Failure Notification  
+      if: failure()
+      run: |
+        echo "❌ GDRI Application deployment failed!"
+        echo "📋 Please check the logs above for details"
