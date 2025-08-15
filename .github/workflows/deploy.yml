@@ -96,13 +96,13 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       continue-on-error: true
       with:
-        server: office.mshohel.com
+        server: ${{ secrets.GDRI_OFFICE_FTP_HOST }}
         username: ${{ secrets.GDRI_OFFICE_FTP_USERNAME }}
         password: ${{ secrets.GDRI_OFFICE_FTP_PASSWORD }}
         port: 21
         protocol: ftp
         local-dir: ./
-        server-dir: /public_html/
+        server-dir: /office.mshohel.com/
         security: loose
         timeout: 60000
         exclude: |
@@ -115,7 +115,7 @@ jobs:
           **/storage/logs/**
           **/bootstrap/cache/**
           
-    - name: 🔄 Deploy to Server via FTP (Attempt 2 - Different Path)
+    - name: 🔄 Deploy to Server via FTP (Attempt 2 - Root directory)
       if: steps.ftp-deploy-1.outcome == 'failure'
       id: ftp-deploy-2
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -127,7 +127,7 @@ jobs:
         port: 21
         protocol: ftp
         local-dir: ./
-        server-dir: /
+        server-dir: /home/mshohel/office.mshohel.com/
         security: loose
         timeout: 60000
         exclude: |
@@ -140,17 +140,18 @@ jobs:
           **/storage/logs/**
           **/bootstrap/cache/**
           
-    - name: 🔄 Deploy to Server via FTP (Attempt 3 - SFTP)
+    - name: 🔄 Deploy to Server via FTP (Attempt 3 - Alternative Path)
       if: steps.ftp-deploy-1.outcome == 'failure' && steps.ftp-deploy-2.outcome == 'failure'
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.GDRI_OFFICE_FTP_HOST }}
         username: ${{ secrets.GDRI_OFFICE_FTP_USERNAME }}
         password: ${{ secrets.GDRI_OFFICE_FTP_PASSWORD }}
-        port: 22
-        protocol: sftp
+        port: 21
+        protocol: ftp
         local-dir: ./
-        server-dir: /public_html/
+        server-dir: ./office.mshohel.com/
+        security: loose
         timeout: 60000
         exclude: |
           **/.git*
