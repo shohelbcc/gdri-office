@@ -54,9 +54,11 @@ jobs:
     - name: 🔧 Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.2'
+        php-version: '8.3'
         extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, gd, curl, zip
         coverage: none
+        ini-values: memory_limit=512M
+        tools: composer:v2
         
     - name: 📦 Cache Composer Dependencies
       uses: actions/cache@v3
@@ -66,10 +68,15 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
           
-    - name: 🔨 Install Composer Dependencies
+    - name: � Clear Composer Cache
+      run: composer clear-cache
+      
+    - name: �🔨 Install Composer Dependencies
       run: |
+        php -v
+        composer --version
         rm -f composer.lock
-        composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist
+        composer update --no-dev --optimize-autoloader --no-interaction --prefer-dist
         composer dump-autoload --optimize
       
     - name: 📋 Setup Node.js
