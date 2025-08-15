@@ -54,7 +54,7 @@ jobs:
     - name: 🔧 Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.1'
+        php-version: '8.2'
         extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql, gd, curl, zip
         coverage: none
         
@@ -68,7 +68,8 @@ jobs:
           
     - name: 🔨 Install Composer Dependencies
       run: |
-        composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist --ignore-platform-reqs
+        rm -f composer.lock
+        composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist
         composer dump-autoload --optimize
       
     - name: 📋 Setup Node.js
