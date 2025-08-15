@@ -91,14 +91,67 @@ jobs:
         # Create deployment zip
         zip -r deployment.zip . -x "*.git*" "node_modules/*" "tests/*" ".env.example" "README.md"
         
-    - name: 🚀 Deploy to Server via FTP
+    - name: 🚀 Deploy to Server via FTP (Attempt 1)
+      id: ftp-deploy-1
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      continue-on-error: true
+      with:
+        server: office.mshohel.com
+        username: ${{ secrets.GDRI_OFFICE_FTP_USERNAME }}
+        password: ${{ secrets.GDRI_OFFICE_FTP_PASSWORD }}
+        port: 21
+        protocol: ftp
+        local-dir: ./
+        server-dir: /public_html/
+        security: loose
+        timeout: 60000
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/tests/**
+          **/.env.example
+          **/README.md
+          **/storage/logs/**
+          **/bootstrap/cache/**
+          
+    - name: 🔄 Deploy to Server via FTP (Attempt 2 - Different Path)
+      if: steps.ftp-deploy-1.outcome == 'failure'
+      id: ftp-deploy-2
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      continue-on-error: true
+      with:
+        server: ${{ secrets.GDRI_OFFICE_FTP_HOST }}
+        username: ${{ secrets.GDRI_OFFICE_FTP_USERNAME }}
+        password: ${{ secrets.GDRI_OFFICE_FTP_PASSWORD }}
+        port: 21
+        protocol: ftp
+        local-dir: ./
+        server-dir: /
+        security: loose
+        timeout: 60000
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/tests/**
+          **/.env.example
+          **/README.md
+          **/storage/logs/**
+          **/bootstrap/cache/**
+          
+    - name: 🔄 Deploy to Server via FTP (Attempt 3 - SFTP)
+      if: steps.ftp-deploy-1.outcome == 'failure' && steps.ftp-deploy-2.outcome == 'failure'
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.GDRI_OFFICE_FTP_HOST }}
         username: ${{ secrets.GDRI_OFFICE_FTP_USERNAME }}
         password: ${{ secrets.GDRI_OFFICE_FTP_PASSWORD }}
+        port: 22
+        protocol: sftp
         local-dir: ./
-        server-dir: /
+        server-dir: /public_html/
+        timeout: 60000
         exclude: |
           **/.git*
           **/.git*/**
