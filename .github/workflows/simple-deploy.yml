@@ -41,6 +41,15 @@ jobs:
       run: cp .env.production .env
       shell: bash
       
+    - name: 🛠️ Laravel Production Fixes
+      run: |
+        php artisan config:clear
+        php artisan config:cache
+        php artisan migrate --force
+        php artisan queue:restart
+        chmod -R 775 storage bootstrap/cache
+      shell: bash
+      
     - name: 🚀 Deploy via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
