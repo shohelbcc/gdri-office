@@ -37,6 +37,10 @@ jobs:
         npm ci
         npm run build
         
+    - name: 🔄 Copy .env.production to .env
+      run: cp .env.production .env
+      shell: bash
+      
     - name: 🚀 Deploy via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
@@ -50,7 +54,6 @@ jobs:
           **/.git*/**
           **/node_modules/**
           **/tests/**
-          **/.env
           **/.env.example
           **/README.md
           **/package-lock.json
