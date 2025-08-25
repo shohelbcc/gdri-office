@@ -125,11 +125,6 @@
     font-weight: 500;
 }
 
-.navbar-light.sticky-top {
-    top: -100px;
-    transition: .5s;
-}
-
 @media (min-width: 992px) {
     .navbar .nav-item .dropdown-menu {
         display: block;

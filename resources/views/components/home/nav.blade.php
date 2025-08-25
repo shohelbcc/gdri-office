@@ -1,5 +1,5 @@
 <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow fixed-top p-0">
         <div class="container-fluid">
             <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
                 <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 110px; height: auto;">

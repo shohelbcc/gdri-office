@@ -47,8 +47,6 @@ jobs:
         php artisan config:cache
         php artisan optimize:clear
         php artisan optimize
-        php artisan migrate --force
-        php artisan queue:restart
         chmod -R 775 storage bootstrap/cache
       shell: bash
       

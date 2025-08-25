@@ -34,7 +34,7 @@ class SubscriptionController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error', 
-                'message' => 'An error occurred while processing your subscription. Please try again.'
+                'message' => $e->getMessage()
             ], 500);
         }
     }

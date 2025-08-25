@@ -73,21 +73,18 @@
     <!-- Navbar End -->
 
     <!-- Hero Start -->
-    <div class="container-fluid position-relative p-0">
-        
-
+    <div class="container-fluid p-0" style="padding-top: 70px !important;">
         {{-- Hero Section - Only show on home page --}}
         @if(request()->routeIs('home'))
             @include('components.home.hero')
         @else
             @include('components.home.page-header')
-        @endif
-        
+        @endif        
     </div>
     <!-- Hero End -->
 
     <!-- Body Start -->
-    @yield('content')
+    @yield('content') 
     <!-- Body End -->
 
     <!-- Subscription Start -->
@@ -102,14 +99,6 @@
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-    
-
-
-
-
-
 
 
     <!-- jQuery Core -->

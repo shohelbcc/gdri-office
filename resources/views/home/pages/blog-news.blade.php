@@ -9,7 +9,6 @@
                             <div class="card blogPost-card border-0 shadow-lg rounded-4 w-100 h-100 animate__animated animate__fadeInUp">
                                 <div class="blogPost-img-wrapper position-relative">
                                     <img src="{{ $item->featured_image }}" alt="{{ $item->title }}" class="card-img-top blogPost-img">
-                                    <span class="blogPost-status badge bg-{{ $item->status === 'active' ? 'success' : 'warning' }} position-absolute top-0 end-0 m-2 px-3 py-2">{{ ucfirst($item->status) }}</span>
                                 </div>
                                 <div class="card-body d-flex flex-column p-4">
                                     <h5 class="card-title fw-bold text-primary mb-2">{{ Str::limit($item->title, 25) }}</h5>

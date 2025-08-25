@@ -15,13 +15,13 @@
     new WOW().init();
 
     // Sticky Navbar
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $(".sticky-top").css("top", "0px");
-        } else {
-            $(".sticky-top").css("top", "-100px");
-        }
-    });
+    // $(window).scroll(function () {
+    //     if ($(this).scrollTop() > 300) {
+    //         $(".sticky-top").css("top", "0px");
+    //     } else {
+    //         $(".sticky-top").css("top", "-100px");
+    //     }
+    // });
 
     // Dropdown on mouse hover
     const $dropdown = $(".dropdown");
